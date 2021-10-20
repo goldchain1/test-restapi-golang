@@ -61,5 +61,24 @@ func student(w http.ResponseWriter, r *http.Request) {
 	w.Write(js)
 }
 func subject(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "วิชาเรียน")
+	m := []struct {
+		Subject string
+	}{
+		{
+			Subject: "คอมพิวเตอร์",
+		},
+		{
+			Subject: "อังกฤษ",
+		},
+		{
+			Subject: "ไทย",
+		},
+		{
+			Subject: "คณิต",
+		},
+	}
+
+	js, _ := json.Marshal(m)
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(js)
 }
